@@ -20,7 +20,7 @@ namespace PurpleMoonV2.Commands
             SetupScreen();
             DrawMessage();
             CLI.SetCursorPos(CLI.Width - 13, 0);
-            CLI.ReadLine();
+            CLI.ReadKey(true);
             Shell.DrawFresh();
         }
 

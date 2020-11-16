@@ -21,7 +21,7 @@ namespace PurpleMoonV2.Hardware
         // read keyboard input
         public static string ReadLine() { return Console.ReadLine(); }
         public static int Read() { return Console.Read(); }
-        public static ConsoleKeyInfo ReadKey() { return Console.ReadKey(); }
+        public static ConsoleKeyInfo ReadKey(bool hide) { return Console.ReadKey(hide); }
 
         // clear the console, overriding any other possible back color property changes
         public static void ForceClear(Color c)

@@ -26,7 +26,7 @@ namespace PurpleMoonV2.Commands
 
             // exit
             CLI.SetCursorPos(CLI.Width - 13, 0);
-            CLI.ReadLine();
+            CLI.ReadKey(true);
             Shell.DrawFresh();
         }
 
@@ -57,7 +57,7 @@ namespace PurpleMoonV2.Commands
                     CLI.SetCursorPos(CLI.Width - 13, 0);
 
                     // goto next page
-                    Console.ReadLine();
+                    CLI.ReadKey(true);
                     SetupScreen();
                     dy = 4; 
                 }
