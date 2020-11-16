@@ -26,4 +26,11 @@
   Simply open the project in visual studio, compile and run in VMWare.
   The only required external file by the operating system is the config file located at "0:\SYSTEM\USERCFG.PMC", however
   if the file and/or directory cannot be located at boot, the OS will attempt to generate it.
+  
+  <img
+src=“Screenshots/Screenshot1.png”
+raw=true
+alt=“Subject Pronouns”
+style=“margin-right: 10px;”
+/>
 
