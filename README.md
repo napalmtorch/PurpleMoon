@@ -27,5 +27,5 @@
   The only required external file by the operating system is the config file located at "0:\SYSTEM\USERCFG.PMC", however
   if the file and/or directory cannot be located at boot, the OS will attempt to generate it.
   
-![alt text](http://www.github.com/napalmtorch/PurpleMoon/Screenshot1.png)
+![alt text](https://raw.githubusercontent.com/napalmtorch/PurpleMoon/main/Screenshot1.png)
 
