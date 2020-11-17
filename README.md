@@ -1,5 +1,6 @@
 # PurpleMoon
   Less graphically ambitious than my previous OS, with managed code execution!
+Youtube Channel: https://www.youtube.com/channel/UC9ZaDKg7dBUzoJx6gk-e26w
 
 # Current Features
 - Command-line interface
