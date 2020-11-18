@@ -23,7 +23,7 @@ namespace PurpleMoonV2.Commands
             {
                 colString = args[1];
                 newColor = (int)CLI.StringToColor(args[1]);
-                if (newColor != 40) { Shell.TitleBarColor = (Color)newColor; CLI.WriteLine("Changed foreground color to " + colString, Color.Green); }
+                if (newColor != 40) { Shell.TitleBarColor = (Color)newColor; CLI.WriteLine("Changed title bar back color to " + colString, Color.Green); }
                 else { CLI.WriteLine(colString + " is not a valid color!", Color.Red); }
             }
             else { CLI.WriteLine("Invalid arguments!", Color.Red); }

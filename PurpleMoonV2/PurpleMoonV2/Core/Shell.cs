@@ -13,6 +13,8 @@ namespace PurpleMoonV2.Core
         public static Color DateTimeColor = Color.White;
         public static Color TitleColor = Color.Magenta;
         public static bool TitleBarVisible = true;
+        public static string TitleBarText = "PurpleMoon OS";
+        public static string TitleBarTime = RTC.GetDateFormatted() + " " + RTC.GetTimeFormatted();
 
         // command list
         public static List<Command> Commands = new List<Command>();
@@ -24,7 +26,7 @@ namespace PurpleMoonV2.Core
             AddCommands();
 
             // load config
-            SystemInfo.LoadConfig(PMFAT.ConfigFile);
+            SystemInfo.LoadConfig(PMFAT.ConfigFile, true);
 
             // clear 
             DrawFresh();
@@ -62,7 +64,10 @@ namespace PurpleMoonV2.Core
             Commands.Add(new Commands.CMDCopyFile());
             Commands.Add(new Commands.CMDDelFile());
 
-            // vm
+            // programs
+            Commands.Add(new Commands.CMDEdit());
+            Commands.Add(new Commands.CMDRun());
+            Commands.Add(new Commands.CMDAsm());
         }
 
         // clear screen, draw title bar, set cursor pos
@@ -81,15 +86,19 @@ namespace PurpleMoonV2.Core
         {
             TextGraphics.DrawLineH(0, 0, CLI.Width, ' ', Color.Black, TitleBarColor); // draw background
             DrawTime(); // draw time
-            TextGraphics.DrawString(CLI.Width - 13, 0, "PurpleMoon OS", TitleColor, TitleBarColor); // draw os name
+            TextGraphics.DrawString(CLI.Width - TitleBarText.Length, 0, TitleBarText, TitleColor, TitleBarColor); // draw title
         }
 
         // draw time
-        public static void DrawTime() { TextGraphics.DrawString(0, 0, RTC.GetDateFormatted() + " " + RTC.GetTimeFormatted(), DateTimeColor, TitleBarColor); }
+        public static void DrawTime() { TextGraphics.DrawString(0, 0, TitleBarTime, DateTimeColor, TitleBarColor); }
 
         // begin accepting commands
         public static void GetInput()
         {
+            // reset title
+            TitleBarText = "PurpleMoon OS";
+
+            // draw input pointer
             if (PMFAT.CurrentDirectory == @"0:\") { CLI.Write("root", Color.Magenta); CLI.Write(":- ", Color.White); }
             else
             {
@@ -97,6 +106,8 @@ namespace PurpleMoonV2.Core
                 CLI.Write(PMFAT.CurrentDirectory.Substring(3, PMFAT.CurrentDirectory.Length - 3), Color.Yellow);
                 CLI.Write(":- ", Color.White);
             }
+
+            // get input
             string input = CLI.ReadLine();
             ParseCommand(input);
         }

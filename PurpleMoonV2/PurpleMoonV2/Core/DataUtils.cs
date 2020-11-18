@@ -8,6 +8,16 @@ namespace PurpleMoonV2.Core
 {
     public static class DataUtils
     {
+        // generate random number based off current time
+        public static int RandNum(int max)
+        {
+            int d1 = RTC.GetHour() + 1;
+            int d2 = RTC.GetMinute() + 1;
+            int d3 = RTC.GetSecond() + 1;
+            int rand = ((d1 * d2 * d3) % max);
+            return rand;
+        }
+
         // convert integer to boolean
         public static bool IntToBool(int val)
         {
@@ -176,8 +186,8 @@ namespace PurpleMoonV2.Core
                 }
                 else if (format == "X3")
                 {
-                    if (decn < 16) { output += "000" + c.ToString(); }
-                    else if (decn >= 16 && decn < 256) { output += "00" + c.ToString(); }
+                    if (decn < 16) { output += "00" + c.ToString(); }
+                    else if (decn >= 16 && decn < 256) { output += "0" + c.ToString(); }
                     else { output += c.ToString(); }
                 }
                 else if (format == "X4")

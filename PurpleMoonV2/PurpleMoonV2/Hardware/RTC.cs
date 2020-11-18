@@ -11,7 +11,6 @@ namespace PurpleMoonV2.Hardware
         public static int GetHour() { return COSMOS_RTC.Hour; }
         public static int GetMinute() { return COSMOS_RTC.Minute; }
         public static int GetSecond() { return COSMOS_RTC.Second; }
-        public static float GetMillisecond() { return (float)COSMOS_RTC.Second * (float)1000; }
 
         // time - strings
         public static string GetTime() { return COSMOS_RTC.Hour.ToString() + ":" + COSMOS_RTC.Minute.ToString() + ":" + COSMOS_RTC.Second.ToString(); }

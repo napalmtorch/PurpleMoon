@@ -25,6 +25,12 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <Compile Remove="External\Drive\**" />
+      <EmbeddedResource Remove="External\Drive\**" />
+      <None Remove="External\Drive\**" />
+    </ItemGroup>
+
+    <ItemGroup>
         <PackageReference Include="Cosmos.Build" Version="0.1.0-localbuild20200708061311" NoWarn="NU1604">
           <PrivateAssets>all</PrivateAssets>
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

@@ -67,14 +67,14 @@ namespace PurpleMoonV2.Hardware
         }
 
         // set cursor pos if valid location
-        public static bool SetCursorPos(int x, int y)
+        public static void SetCursorPos(int x, int y)
         {
-            if (x >= 0 && x < Width && y >= 0 && y < Height)
-            {
-                CursorX = x; CursorY = y;
-                return true;
-            }
-            else { return false; }
+            int cx = x, cy = y;
+            if (x < 0) { cx = 0; }
+            if (y < 0) { cy = 0; }
+            if (x >= Width) { cx = Width - 1; }
+            if (y >= Height) { cy = Height - 1; }
+            CursorX = cx; CursorY = cy;
         }
 
         // convert color name to color value

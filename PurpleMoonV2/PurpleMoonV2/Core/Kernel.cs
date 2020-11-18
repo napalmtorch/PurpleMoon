@@ -4,6 +4,7 @@ using System.Text;
 using Sys = Cosmos.System;
 using PurpleMoonV2.Hardware;
 using PurpleMoonV2.Graphics;
+using PurpleMoonV2.VM;
 
 namespace PurpleMoonV2.Core
 {
@@ -16,6 +17,9 @@ namespace PurpleMoonV2.Core
 
             // init shell
             Shell.Initialize();
+
+            // init vm
+            Runner.Initialize();
         }
 
         protected override void Run()
@@ -23,5 +27,7 @@ namespace PurpleMoonV2.Core
             // get input
             Shell.GetInput();
         }
+
+        public static void Delay(int millis) { Cosmos.HAL.Global.PIT.Wait((uint)millis); }
     }
 }

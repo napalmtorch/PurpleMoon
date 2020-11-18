@@ -40,7 +40,7 @@ namespace PurpleMoonV2.Core
         public static void ShowRAM() { CLI.WriteLine(TotalRAM.ToString() + "MB RAM"); }
 
         // load system configuration file
-        public static void LoadConfig(string file)
+        public static void LoadConfig(string file, bool clear)
         {
             if (!PMFAT.FileExists(file)) { CLI.WriteLine("Could not locate configuration file!", Color.Red); }
             else
@@ -64,7 +64,8 @@ namespace PurpleMoonV2.Core
                     }
 
                     // reset screen
-                    Shell.DrawFresh();
+                    if (clear) { Shell.DrawFresh(); }
+                    else { Shell.DrawTitleBar(); }
                 }
                 // unexpected error!
                 catch (Exception ex)

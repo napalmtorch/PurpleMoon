@@ -17,17 +17,40 @@ namespace PurpleMoonV2.Commands
 
         public override void Execute(string line, string[] args)
         {
-            // draw
-            SetupScreen();
-            DrawMessage();
+            // show menu
+            if (args.Length == 1)
+            {
+                // draw
+                SetupScreen();
+                DrawMessage();
 
-            // exit message
-            TextGraphics.DrawString(2, CLI.Height - 2, "Press any key to exit...", Color.White, Color.Blue);
+                // exit message
+                TextGraphics.DrawString(2, CLI.Height - 2, "Press any key to exit...", Color.White, Color.Blue);
 
-            // exit
-            CLI.SetCursorPos(CLI.Width - 13, 0);
-            CLI.ReadKey(true);
-            Shell.DrawFresh();
+                // exit
+                CLI.SetCursorPos(CLI.Width - 13, 0);
+                CLI.ReadKey(true);
+                Shell.DrawFresh();
+            }
+            // show command usage
+            else
+            {
+                string cmd = args[1].ToUpper();
+                bool invalid = false;
+                for (int i = 0; i < Shell.Commands.Count; i++)
+                {
+                    if (Shell.Commands[i].Name == cmd)
+                    {
+                        CLI.WriteLine(Shell.Commands[i].Help);
+                        if (Shell.Commands[i].Usage.Length > 0) { CLI.WriteLine(Shell.Commands[i].Usage, Color.Gray); }
+                        invalid = false;
+                        break;
+                    }
+                    else { invalid = true; }
+                }
+
+                if (invalid) { CLI.WriteLine("Invalid argument!", Color.Red); CLI.WriteLine("Type help without an argument to see available commands.", Color.White); }
+            }
         }
 
         private void SetupScreen()
@@ -38,6 +61,7 @@ namespace PurpleMoonV2.Commands
             TextGraphics.DrawLineH(2, 2, CLI.Width - 4, ' ', Color.White, Color.Cyan);
             TextGraphics.DrawString(2, 2, " CMD                   DESCRIPTION", Color.Black, Color.Cyan);
             TextGraphics.DrawLineH(0, 3, CLI.Width, ' ', Color.White, Color.Black);
+            TextGraphics.DrawString(Shell.TitleBarTime.Length, 0, " | Run \"help [cmd]\" for usage", Shell.TitleColor, Shell.TitleBarColor);
             CLI.SetCursorPos(2, 2);
         }
 

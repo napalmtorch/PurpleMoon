@@ -47,7 +47,7 @@ namespace PurpleMoonV2.Commands
                             CLI.WriteLine("Could not delete directory \"" + realPath + "\"", Color.Red);
                         }
                     }
-                    CLI.WriteLine("Error attempting to delete directory!", Color.Red);
+                    else { CLI.WriteLine("Error attempting to delete directory \"" + realPath + "\"", Color.Red); }
                 }
                 else { CLI.WriteLine("Argument expected!", Color.Red); }
             }

@@ -13,6 +13,7 @@ namespace PurpleMoonV2.Commands
         {
             this.Name = "ECHO";
             this.Help = "Prints a line of input";
+            this.Usage = "Usage: echo [text]";
         }
 
         public override void Execute(string line, string[] args)

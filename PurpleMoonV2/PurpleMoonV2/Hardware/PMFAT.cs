@@ -136,7 +136,21 @@ namespace PurpleMoonV2.Hardware
         // delete directory
         public static bool DeleteFolder(string path)
         {
-            if (FolderExists(path)) { return Driver.DeleteDirectory(Driver.GetDirectory(path)); }
+            if (FolderExists(path))
+            {
+                try
+                {
+                    CLI.WriteLine("Attempting to delete \"" + path + "\"", Graphics.Color.Yellow);
+                    Directory.Delete(path, true);
+                    if (!FolderExists(path)) { return true; }
+                    else { return false; }
+                }
+                catch (Exception ex)
+                {
+                    CLI.Write("[INTERNAL] ", Graphics.Color.Red); CLI.WriteLine(ex.Message, Graphics.Color.White);
+                    return false;
+                }
+            }
             else { return false; }
         }
 
