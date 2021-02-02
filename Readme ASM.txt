@@ -23,7 +23,7 @@ REGISTERS
     as carry in math operations.
 
   - I is the index register, which cannot be referenced directly. Instead,
-    there are a handful of instructions to manage this instruction.
+    there are a handful of instructions to manage this register.
 
   - W is the wait register, currently only used for reading keyboard input.
     When the WAIT instruction is called, it waits for a key press, then
